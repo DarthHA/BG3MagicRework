@@ -1,0 +1,21 @@
+WitchBolt: 电弧造成持续伤害
+PhantasmalForce: 持续造成上一次造成的元素种类伤害
+SpikeGrowth: 产生一片荆棘
+Silence: 产生一片无法施法的区域
+FlamingSphere: 产生一个滚动的火球
+EnhanceLeap: 强化跳跃能力并免疫摔落伤害
+SpiritGuardians: 产生环绕飞行的灵体造成伤害
+HungerOfHadar: 产生一片黑色法阵
+MelfsMinuteMeteors: 制造若干环绕飞行的微型流星
+CallLightning: 可以再次降下闪电，剩余次数: {0}
+CloudOfDaggers: 召唤大量旋转的匕首。
+FaerieFire:
+	'''
+	维持敌怪妖火的效果，
+	沾染妖火的敌怪会发光，且攻击其的法术获得优势。
+	'''
+Fear:
+	'''
+	维持恐惧术的效果，
+	受恐惧术影响的敌怪无法移动，且受到的法术豁免为劣势。
+	'''

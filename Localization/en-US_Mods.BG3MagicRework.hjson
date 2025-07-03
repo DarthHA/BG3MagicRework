@@ -1,0 +1,127 @@
+Yes: 是
+No: 否
+Self: 自身
+Instant: 立即
+Seconds: 秒
+Tiles: 格
+TriggerReaction: 反应: {0}
+Infinite: 无限
+ReactionOn:
+	'''
+	该反应触发已开启
+	右键以关闭
+	'''
+ReactionOff:
+	'''
+	该反应触发已关闭
+	右键以开启
+	'''
+MetaMagicOn:
+	'''
+	该超魔效果已开启
+	右键以关闭
+	'''
+MetaMagicOff:
+	'''
+	该超魔效果已关闭
+	右键以开启
+	'''
+Cantrips: 戏法
+XRingAndXSchool: "{0}环{1}法术"
+CantripAndXSchool: "{0}学派戏法"
+DamageDescs: "{0}-{1} 伤害"
+DamageDescsOne: "{0} 伤害"
+ExtraDamageDescs: " ({0}-{1} 若满足条件)"
+ExtraDamageDescsOne: " ({0} 若满足条件)"
+ExtraDamageDescs2: 满足条件时:
+RiseRing: 升环施法:
+LvlUpCantrip: 升级施法:
+RiseRingNormalText1: 伤害倍率提升至对应环数
+RiseRingNormalText2: 且伤害增加{0}
+RiseRingNormalText3: 条件伤害增加{0}
+LvlUpCantripNormalText1: 伤害倍率提升至对应等级
+LvlUpCantripNormalText2: 且在3级和6级时伤害增加{0}
+LvlUpCantripNormalText3: 且在3级和6级时条件伤害增加{0}
+NoRiseRingEffect: 该法术无升环收益
+NoLvlUpEffect: 该戏法无升级收益
+DifficultyClass: 豁免难度
+ConRequired: 专注
+ConPrefix: "专注: "
+IsAction: 动作
+IsReaction: 反应
+XRingSlot: 等级{0} 法术位
+SpellSlotDesc:
+	'''
+	等级{0} 法术位 {1}/{2}
+	用于施展{0}环法术
+	不使用法术一段时间逐渐恢复
+	Boss存在时恢复速度降低
+	'''
+SorceryPointDesc:
+	'''
+	术法点 {0}/{1}
+	可以用来强化你的法术
+	随时间逐渐恢复
+	Boss存在时恢复速度降低
+	'''
+XRingSpell: "{0}环法术"
+CannotRelease: 无法施法
+DebuffReason: 受异常状态影响
+HungerReason: 受奥术饥渴影响
+NoTarget: 无施法目标
+NoSpace: 施法空间不足
+CannotSee: 目标受阻挡
+OutOfRange: 超过施法范围
+XDealXDamageToX: "{0}对{1}造成了({2})x{3}={4}伤害"
+XUsedSpellX: "{0}使用了法术{1}"
+XUsedReactionX: "{0}触发了反应: {1}"
+XGetXSecXBuff: "{0}获得了{1}秒的{2}效果"
+XPassedXsSavingThrowDCX: "{0}通过了来自{1}的豁免检定(DC={2})"
+XNotPassedXsSavingThrowDCX: "{0}未能通过来自{1}的豁免检定(DC={2})"
+XAddedXSecXBuff: "{0}被施加了{1}秒的{2}效果"
+XBeginConX: "{0}开始了对{1}的专注"
+XEndConX: "{0}解除了对{1}的专注"
+RightClickToEndCon: 右键以解除专注
+
+Elements: {
+	None: 物理
+	Acid: 强酸
+	Cold: 寒冷
+	Fire: 火焰
+	Force: 力场
+	Lightning: 闪电
+	Necrotic: 黯蚀
+	Poison: 毒素
+	Psychic: 心灵
+	Radiant: 光耀
+	Thunder: 雷鸣
+	Unknown: 任意
+}
+
+SchoolOfMagic: {
+	Abjuration: 防护
+	Conjuration: 咒法
+	Divination: 预言
+	Enchantment: 惑控
+	Evocation: 塑能
+	Illusion: 幻术
+	Necromancy: 死灵
+	Transmutation: 变化
+	Unknown: 未知
+}
+
+Configs: {
+	BG3Config: {
+		DisplayName: 选项
+
+		ShowCombatInfo: {
+			Label: 显示战斗信息
+			Tooltip: 在聊天框显示战斗信息(刷屏警告)
+		}
+
+		ShowRangeIndicator: {
+			Label: 显示法术作用范围
+			Tooltip: 由于判定位置与释放位置的不同，会有少量误差
+		}
+	}
+}

@@ -1,0 +1,16 @@
+RecoverAXRingSlot: 至多恢复一个[i:BG3MagicRework/SpellSlotIconItem]等级{0} 法术位
+IncreaseSorceryPointByX: "[i:BG3MagicRework/SorceryPointIconItem]术法点上限 +{0}"
+IncreaseSpellSlotStartRecoverRateByX: 法术位开始恢复速度 +{0}%
+IncreaseSpellSlotRecoverRateByX: 法术位恢复速度 +{0}%
+NewManaCrystalTooltip:
+	'''
+	使用3个或以上：
+	获得一个[i:BG3MagicRework/SpellSlotIconItem]等级1 法术位
+	使用6个或以上：
+	获得一个[i:BG3MagicRework/SpellSlotIconItem]等级1 法术位
+	使用9个或以上：
+	获得一个[i:BG3MagicRework/SpellSlotIconItem]等级2 法术位
+	'''
+NewArcaneCrystalTooltip: 永久获得一个[i:BG3MagicRework/SpellSlotIconItem]等级2 法术位
+GainAXRingSlot: "[i:BG3MagicRework/SpellSlotIconItem]获得一个等级{0} 法术位"
+GainXXRingSlot: "[i:BG3MagicRework/SpellSlotIconItem]获得{0}个等级{1} 法术位"

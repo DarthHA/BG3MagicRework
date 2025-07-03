@@ -1,0 +1,242 @@
+ConSlotBuff0: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff1: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff2: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff3: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff4: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff5: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff6: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff7: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff8: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+ConSlotBuff9: {
+	DisplayName: 专注位
+	Description: 你不应该看到的
+}
+
+HRTrigger: {
+	DisplayName: 反应: 炼狱叱喝
+	Description: ""
+}
+
+ShieldTrigger: {
+	DisplayName: 反应: 护盾术
+	Description: ""
+}
+
+BeeTrigger: {
+	DisplayName: 反应: 蜜蜂集群
+	Description: ""
+}
+
+IceSlowBuff: {
+	DisplayName: 减速
+	Description: 速度降低25%
+}
+
+BlindedDNDBuff: {
+	DisplayName: 目盲
+	Description: 近战伤害降低50%
+}
+
+SilencedDNDBuff: {
+	DisplayName: 沉默
+	Description: 弹幕伤害降低50%
+}
+
+GuidingBoltBuff: {
+	DisplayName: 曳光弹
+	Description: 攻击其的法术获得优势。
+}
+
+DisadvantageTerrainBuff: {
+	DisplayName: 困难地形
+	Description: 移动速度降低50%
+}
+
+SpiritGuardiansSlowBuff: {
+	DisplayName: 减速
+	Description: 移动速度降低50%
+}
+
+LongstriderBuff: {
+	DisplayName: 大步奔行
+	Description: 提高移动最大速度与加速度
+}
+
+CarefulSpellMMBuff: {
+	DisplayName: 谨慎法术
+	Description:
+		'''
+		消耗: [i:BG3MagicRework/SorceryPointIconItem]1术法点
+		使下一个使用的法术可以无视物块施法
+		'''
+}
+
+DistantSpellMMBuff: {
+	DisplayName: 远距法术
+	Description:
+		'''
+		消耗: [i:BG3MagicRework/SorceryPointIconItem]1术法点
+		使下一个使用的法术施法范围翻倍
+		'''
+}
+
+ExtendedSpellMMBuff: {
+	DisplayName: 延效法术
+	Description:
+		'''
+		消耗: [i:BG3MagicRework/SorceryPointIconItem]1术法点
+		使下一个使用的法术持续时间翻倍
+		'''
+}
+
+HeightenedSpellMMBuff: {
+	DisplayName: 升阶法术
+	Description:
+		'''
+		消耗: [i:BG3MagicRework/SorceryPointIconItem]1术法点
+		使下一个使用的控制类法术获得优势
+		'''
+}
+
+TwinnedSpellMMBuff: {
+	DisplayName: 强效法术
+	Description:
+		'''
+		消耗: [i:BG3MagicRework/SorceryPointIconItem]1术法点
+		使下一个使用的攻击类法术获得优势
+		'''
+}
+
+PoisonedDNDBuff: {
+	DisplayName: 中毒
+	Description: 持续时间内受到的法术豁免为劣势
+}
+
+WetDNDBuff: {
+	DisplayName: 潮湿
+	Description: 免疫燃烧，受到火焰伤害降低，但寒冷与雷电伤害提高
+}
+
+BurningDNDBuff: {
+	DisplayName: 燃烧
+	Description: 受到火焰伤害时额外受到1D4点火焰伤害
+}
+
+GreaseBuff: {
+	DisplayName: 油腻
+	Description: 受到火焰伤害会燃烧
+}
+
+SleepDNDBuff: {
+	DisplayName: 睡眠
+	Description: 无法行动，且攻击其的法术获得优势，受到攻击伤害解除
+}
+
+ArcaneHungerBuff: {
+	DisplayName: 奥术饥渴
+	Description: 你因为过度使用法术受到了严重的副作用
+}
+
+DNDManaSickness: {
+	DisplayName: 魔力疾病
+	Description: 不能再消耗魔力回复物品
+}
+
+BlindedDNDBuff_Player: {
+	DisplayName: 目盲
+	Description: 法术伤害降低50%
+}
+
+ArmorOfAgathysBuff: {
+	DisplayName: 艾嘉西斯之铠
+	Description:
+		'''
+		获得临时生命值，
+		临时生命存在时受到近战伤害，则攻击者受到伤害。
+		'''
+}
+
+ChilledDNDBuff: {
+	DisplayName: 寒冷
+	Description:
+		'''
+		移动速度降低25%，受到火焰伤害降低，但寒冷伤害提高
+		再次受到潮湿效果即可变为冰冻
+		'''
+}
+
+FrozenDNDBuff: {
+	DisplayName: 冰冻
+	Description:
+		'''
+		无法行动，受到火焰伤害降低
+		受到雷鸣，力场，物理伤害提高
+		一旦受到上述伤害会立刻解除
+		'''
+}
+
+AcidArrowBuff: {
+	DisplayName: 强酸
+	Description: 持续时间结束后受到伤害
+}
+
+MageArmorBuff: {
+	DisplayName: 魔法护甲
+	Description: 防御力提升至{0}
+}
+
+MirrorImageBuff: {
+	DisplayName: 镜像术
+	Description:
+		'''
+		召唤你的幻影复制体围绕在周围，
+		每个幻影提供20%的闪避几率，
+		每次闪避成功时失去一个幻影。
+		'''
+}
+
+FaerieFireBuff: {
+	DisplayName: 妖火
+	Description: 沾染妖火的敌怪会发光，且攻击其的法术获得优势。
+}
+
+FearDNDBuff: {
+	DisplayName: 恐惧术
+	Description: 受恐惧术影响的敌怪无法移动，且受到的法术豁免为劣势。
+}

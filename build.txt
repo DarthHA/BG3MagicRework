@@ -1,0 +1,3 @@
+displayName = BG3MagicRework
+author = V
+version = 0.1

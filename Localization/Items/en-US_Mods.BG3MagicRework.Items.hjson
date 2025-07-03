@@ -1,0 +1,149 @@
+SomeTest: {
+	DisplayName: 测试
+	Tooltip: ""
+}
+
+ShieldBook: {
+	DisplayName: 护盾法书
+	Tooltip: ""
+}
+
+FrogStaff: {
+	DisplayName: 蛙腿法杖
+	Tooltip: ""
+}
+
+FastBook: {
+	DisplayName: 神速之书
+	Tooltip: ""
+}
+
+OilBook: {
+	DisplayName: 油腻之书
+	Tooltip: ""
+}
+
+SleepStaff: {
+	DisplayName: 沉眠法杖
+	Tooltip: ""
+}
+
+AcidDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+ColdDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+FireDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+ForceDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+LightningDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+NecroticDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+NoneDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+PoisonDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+PsychicDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+RadiantDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+ThunderDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+UnknownDamageIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+ActionIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+AOEIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+ConcentrationIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+DCIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+ReactionIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+SpellRangeIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+SpellSlotIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+TimeSpanIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+UpcastIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+SorceryPointIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+HealingIconItem: {
+	DisplayName: 图标
+	Tooltip: ""
+}
+
+KnockKey: {
+	DisplayName: 附魔钥匙
+	Tooltip: ""
+}
