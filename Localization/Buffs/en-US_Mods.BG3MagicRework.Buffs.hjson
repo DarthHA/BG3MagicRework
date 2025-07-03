@@ -243,5 +243,5 @@ FearDNDBuff: {
 
 DisadvantageTerrainBuff2: {
 	DisplayName: 困难地形(植物滋长)
-	Description: 移动速度降低25%
+	Description: 移动速度降低至25%
 }
