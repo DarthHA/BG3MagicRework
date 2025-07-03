@@ -46,6 +46,7 @@ namespace BG3MagicRework.Static
         public static Texture2D Crystal;
         public static Texture2D DaggerVert;
         public static Texture2D SlashWave;
+        public static Texture2D BloodRoot;
         public static void Load()
         {
             FieldInfo[] f = typeof(TextureLibrary).GetFields(BindingFlags.Static | BindingFlags.Public);

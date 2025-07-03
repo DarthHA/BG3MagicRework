@@ -1,11 +1,10 @@
-﻿using BG3MagicRework.Static;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace BG3MagicRework.Buffs.Enemy
 {
-    public class DisadvantageTerrainBuff : ModBuff
+    public class DisadvantageTerrainBuff2 : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -23,20 +22,6 @@ namespace BG3MagicRework.Buffs.Enemy
                 AdvancedCombatText.NewText(npc.getRect(), Color.White, Lang.GetBuffName(Type), true);
             }
             */
-            if (npc.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff2>()))
-            {
-                npc.ClearBuff(buffIndex);
-                buffIndex--;
-            }
-        }
-
-        public override void Update(Player player, ref int buffIndex)
-        {
-            if (player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff2>()))
-            {
-                player.DelBuff(buffIndex);
-                buffIndex--;
-            }
         }
     }
 }

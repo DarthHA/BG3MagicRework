@@ -4,10 +4,8 @@ using BG3MagicRework.Spells.Ring2;
 using BG3MagicRework.Static;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Graphics.Light;
 using Terraria.ModLoader;
 
 namespace BG3MagicRework.Projectiles.Ring2
@@ -39,7 +37,7 @@ namespace BG3MagicRework.Projectiles.Ring2
 
             Projectile.ai[0]++;
 
-            if (Projectile.ai[0] == 40)    //20
+            if (Projectile.ai[0] == 31)    //20
             {
                 int protmp = owner.NewMagicProj(Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SpikeGrowthProj>(), diceDamage, 0, CurrentRing);
                 if (protmp >= 0 && protmp < 1000)
@@ -60,20 +58,21 @@ namespace BG3MagicRework.Projectiles.Ring2
 
         public override bool PreDraw(ref Color lightColor)
         {
-            float TargetRadius = SpikeGrowthProj.GetRadius(numVines) * 1.3f;
-            float radius = MathHelper.Lerp(10, TargetRadius, MathHelper.Clamp(Projectile.ai[0] / 50f, 0, 1));
-            float light1 = MathHelper.Lerp(1, 0, MathHelper.Clamp((Projectile.ai[0] - 30f) / 30f, 0, 1));
-            DrawRing(Projectile.Center, radius, 40, Color.Brown * light1);
-            DrawRing(Projectile.Center, radius, 20, Color.White * light1);
-            DrawRing(Projectile.Center, radius * 0.6f, 40 * 0.8f, Color.Brown * light1);
-            DrawRing(Projectile.Center, radius * 0.6f, 20 * 0.8f, Color.White * light1);
+            float TargetRadius = SpikeGrowthProj.GetRadius(numVines);
+            if (Projectile.ai[0] < 25)
+            {
+                float radius1 = MathHelper.Lerp(TargetRadius * 0.25f, TargetRadius * 0.75f, Projectile.ai[0] / 25f);
+                float light1 = 1;
+                if (Projectile.ai[0] > 15)
+                {
+                    light1 = MathHelper.Lerp(1, 0, (Projectile.ai[0] - 15f) / 10f);
+                }
+                DrawRing(Projectile.Center, radius1, 40, Color.Brown * light1);
+                DrawRing(Projectile.Center, radius1, 20, Color.White * light1);
+            }
             if (Projectile.ai[0] < 30)
             {
-                float scaleY = 1;
-                if (Projectile.ai[0] < 20)
-                {
-                    scaleY = MathHelper.Lerp(3, 1, Projectile.ai[0] / 20f);
-                }
+                float scaleY = MathHelper.Lerp(3, 1, Projectile.ai[0] / 30f);
                 float light2 = 1;
                 if (Projectile.ai[0] < 5)
                 {
@@ -86,35 +85,59 @@ namespace BG3MagicRework.Projectiles.Ring2
                 Texture2D texLightField = TextureLibrary.LightField;
                 Texture2D texLight = TextureLibrary.BloomFlare;
                 EasyDraw.AnotherDraw(BlendState.Additive);
-                Main.spriteBatch.Draw(texLightField, Projectile.Center - Main.screenPosition, null, Color.DarkOrange * light2, MathHelper.Pi / 2f, texLightField.Size() / 2f, new Vector2(scaleY * 1f, 0.3f), SpriteEffects.None, 0);
-                Main.spriteBatch.Draw(texLightField, Projectile.Center - Main.screenPosition, null, Color.White * light2, MathHelper.Pi / 2f, texLightField.Size() / 2f, new Vector2(scaleY * 0.8f, 0.2f), SpriteEffects.None, 0);
-                Main.spriteBatch.Draw(texLight, Projectile.Center - Main.screenPosition, null, Color.DarkOrange * light2, 0, texLight.Size() / 2f, 0.2f, SpriteEffects.None, 0);
-                Main.spriteBatch.Draw(texLight, Projectile.Center - Main.screenPosition, null, Color.White * light2, 0, texLight.Size() / 2f, 0.15f, SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texLightField, Projectile.Center - Main.screenPosition, null, Color.DarkOrange * light2, MathHelper.Pi / 2f, texLightField.Size() / 2f, new Vector2(scaleY, 0.3f) * 0.5f, SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texLightField, Projectile.Center - Main.screenPosition, null, Color.White * light2, MathHelper.Pi / 2f, texLightField.Size() / 2f, new Vector2(scaleY * 0.8f, 0.2f) * 0.5f, SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texLight, Projectile.Center - Main.screenPosition, null, Color.DarkOrange * light2, 0, texLight.Size() / 2f, 0.1f, SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texLight, Projectile.Center - Main.screenPosition, null, Color.White * light2, 0, texLight.Size() / 2f, 0.08f, SpriteEffects.None, 0);
+                EasyDraw.AnotherDraw(BlendState.AlphaBlend);
+            }
+            if (Projectile.ai[0] > 25)
+            {
+                float scaleY = 3;
+                float light3 = 1;
+                if (Projectile.ai[0] < 30)
+                {
+                    light3 = MathHelper.Lerp(0, 1, (Projectile.ai[0] - 25) / 5f);
+                }
+                else if (Projectile.ai[0] > 50)
+                {
+                    light3 = MathHelper.Lerp(1, 0, (Projectile.ai[0] - 50) / 10f);
+                }
+                Texture2D texLightField = TextureLibrary.LightField;
+                Texture2D texLight = TextureLibrary.BloomFlare;
+                EasyDraw.AnotherDraw(BlendState.Additive);
+                Main.spriteBatch.Draw(texLightField, Projectile.Center - Main.screenPosition, null, Color.DarkOrange * light3, MathHelper.Pi / 2f, texLightField.Size() / 2f, new Vector2(scaleY * 1f, 0.3f), SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texLightField, Projectile.Center - Main.screenPosition, null, Color.White * light3, MathHelper.Pi / 2f, texLightField.Size() / 2f, new Vector2(scaleY * 0.8f, 0.2f), SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texLight, Projectile.Center - Main.screenPosition, null, Color.DarkOrange * light3, 0, texLight.Size() / 2f, 0.2f, SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(texLight, Projectile.Center - Main.screenPosition, null, Color.White * light3, 0, texLight.Size() / 2f, 0.15f, SpriteEffects.None, 0);
                 EasyDraw.AnotherDraw(BlendState.AlphaBlend);
             }
             if (Projectile.ai[0] > 30)
             {
-                float light3 = 1;
-                if (Projectile.ai[0] < 35)
+                float light4 = 1;
+                if (Projectile.ai[0] > 40)
                 {
-                    light3 = MathHelper.Lerp(0, 1, (Projectile.ai[0] - 30) / 5f);
+                    light4 = MathHelper.Lerp(1, 0, (Projectile.ai[0] - 35) / 25f);
                 }
-                else if (Projectile.ai[0] > 45)
+
+                for (int i = 0; i <= 10; i++)
                 {
-                    light3 = MathHelper.Lerp(1, 0, (Projectile.ai[0] - 45) / 15f);
+                    float radius4 = MathHelper.Lerp(0.1f, 1, i / 10f) * SpikeGrowthProj.GetRadius(numVines) * 1.05f;
+                    float height4 = MathHelper.Lerp(0.3f, 1f, i / 10f) * 60;
+                    DrawRing2(Projectile.Center, radius4, height4, Color.DarkOrange * light4);
+                    DrawRing2(Projectile.Center, radius4, height4 * 0.5f, Color.White * light4);
                 }
-                Texture2D tex = TextureLibrary.LightFieldVert;
-                List<CustomVertexInfo> bars1 = new();
-                for (int i = 0; i <= 60; i++)
+            }
+            if (Projectile.ai[0] > 30 && Projectile.ai[0] < 55)
+            {
+                float radius5 = MathHelper.Lerp(TargetRadius * 0.9f, TargetRadius * 1.1f, Projectile.ai[0] / 25f);
+                float light5 = 1;
+                if (Projectile.ai[0] > 45)
                 {
-                    float rot = MathHelper.TwoPi / 60f * i;
-                    Vector2 R = rot.ToRotationVector2();
-                    Vector2 Pos1 = Projectile.Center + R * SpikeGrowthProj.GetRadius(numVines) * 0.9f + new Vector2(0, -1) * 240;
-                    Vector2 Pos2 = Projectile.Center + R * SpikeGrowthProj.GetRadius(numVines) * 0.9f + new Vector2(0, 1) * 240;
-                    bars1.Add(new CustomVertexInfo(Pos1 - Main.screenPosition, Color.White, new Vector3(1 / 60f * i, 0f, 1f)));
-                    bars1.Add(new CustomVertexInfo(Pos2 - Main.screenPosition, Color.White, new Vector3(1 / 60f * i, 1f, 1f)));
+                    light5 = MathHelper.Lerp(1, 0, (Projectile.ai[0] - 45f) / 10f);
                 }
-                DrawUtils.DrawLoopTrail(tex, bars1, Color.DarkOrange * light3, 0.33f, 0f, BlendState.Additive);
+                DrawRing(Projectile.Center, radius5, 40, Color.Brown * light5);
+                DrawRing(Projectile.Center, radius5, 20, Color.White * light5);
             }
             return false;
         }
@@ -143,6 +166,20 @@ namespace BG3MagicRework.Projectiles.Ring2
             DrawUtils.DrawLoopTrail(tex, bars, color, 0.33f, Projectile.ai[0] / 300f, BlendState.Additive);
         }
 
-
+        public void DrawRing2(Vector2 Center, float radius, float height, Color color)
+        {
+            Texture2D tex = TextureLibrary.LightFieldVert;
+            List<CustomVertexInfo> bars1 = new();
+            for (int i = 0; i <= 240; i++)
+            {
+                float rot = MathHelper.TwoPi / 240f * i;
+                Vector2 R = rot.ToRotationVector2();
+                Vector2 Pos1 = Center + R * radius + new Vector2(0, -1) * height;
+                Vector2 Pos2 = Center + R * radius + new Vector2(0, 1) * height;
+                bars1.Add(new CustomVertexInfo(Pos1 - Main.screenPosition, Color.White, new Vector3(1 / 240f * i, 0f, 1f)));
+                bars1.Add(new CustomVertexInfo(Pos2 - Main.screenPosition, Color.White, new Vector3(1 / 240f * i, 1f, 1f)));
+            }
+            DrawUtils.DrawLoopTrail(tex, bars1, color, 0.33f, 0f, BlendState.Additive);
+        }
     }
 }

@@ -240,3 +240,8 @@ FearDNDBuff: {
 	DisplayName: 恐惧术
 	Description: 受恐惧术影响的敌怪无法移动，且受到的法术豁免为劣势。
 }
+
+DisadvantageTerrainBuff2: {
+	DisplayName: 困难地形(植物滋长)
+	Description: 移动速度降低25%
+}

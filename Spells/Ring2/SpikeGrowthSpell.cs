@@ -16,7 +16,7 @@ namespace BG3MagicRework.Spells.Ring2
         public override int InitialRing => 2;
         public override DiceDamage BaseDamage => new(4, 2, DamageElement.None, CombatStat.CantripDamage * 4);
         public override DiceDamage RisingDamageAddition => new();
-        public override int SpellRange => 12;
+        public override int SpellRange => 24;
         public override int AOERadius => 20;
         public override bool Concentration => true;
         public override int TimeSpan => 60;
@@ -69,7 +69,7 @@ namespace BG3MagicRework.Spells.Ring2
         {
             EasyDraw.AnotherDraw(BlendState.Additive);
             Texture2D tex = TextureLibrary.Ritual;
-            Main.spriteBatch.Draw(tex, owner.Center - Main.screenPosition, null, Color.DarkOrange * light * 1.2f, miscTimer * owner.direction, tex.Size() / 2f, scale * 0.5f, SpriteEffects.None, 0);
+            Main.spriteBatch.Draw(tex, owner.Center - Main.screenPosition, null, Color.DarkOrange * light * 1.2f, miscTimer * owner.direction, tex.Size() / 2f, 0.4f, SpriteEffects.None, 0);
             EasyDraw.AnotherDraw(BlendState.AlphaBlend);
         }
 

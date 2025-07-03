@@ -195,8 +195,11 @@ namespace BG3MagicRework.Systems
             {
                 gnpc.AIFactor = 0f;
             }
-            if (npc.HasBuff(ModContent.BuffType<IceSlowBuff>()) ||
-                gnpc.FireAndColdStatus == FireAndColdStatusID.Chilled)      //两种寒冷减速不叠加
+            if (gnpc.FireAndColdStatus == FireAndColdStatusID.Chilled)      //两种寒冷减速不叠加
+            {
+                gnpc.SpeedFactor *= 0.5f;
+            }
+            else if (npc.HasBuff(ModContent.BuffType<IceSlowBuff>()))
             {
                 gnpc.SpeedFactor *= 0.75f;
             }
@@ -204,11 +207,15 @@ namespace BG3MagicRework.Systems
             {
                 gnpc.SpeedFactor *= 0.5f;
             }
-            if (npc.HasBuff<DisadvantageTerrainBuff>())
+            if (npc.HasBuff<DisadvantageTerrainBuff2>())
+            {
+                gnpc.SpeedFactor *= 0.25f;
+            }
+            else if (npc.HasBuff<DisadvantageTerrainBuff>())
             {
                 gnpc.SpeedFactor *= 0.5f;
             }
-            if (npc.HasBuff(ModContent.BuffType<FearDNDBuff>()))
+                if (npc.HasBuff(ModContent.BuffType<FearDNDBuff>()))
             {
                 gnpc.SpeedFactor *= 0.001f;
             }

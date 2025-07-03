@@ -243,7 +243,12 @@ namespace BG3MagicRework.Systems
                 Player.runSlowdown *= 1.75f;
             }
 
-            if (Player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff>()))
+            if (Player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff2>()))
+            {
+                Player.moveSpeed *= 0.25f;
+                Player.jump /= 4;
+            }
+            else if (Player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff>()))
             {
                 Player.moveSpeed *= 0.5f;
                 Player.jump /= 2;

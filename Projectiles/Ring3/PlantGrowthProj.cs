@@ -1,6 +1,6 @@
-using BG3MagicRework.BaseType;
+ï»¿using BG3MagicRework.BaseType;
 using BG3MagicRework.Buffs.Enemy;
-using BG3MagicRework.Spells.Ring2;
+using BG3MagicRework.Spells.Ring3;
 using BG3MagicRework.Static;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,9 +10,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BG3MagicRework.Projectiles.Ring2
+namespace BG3MagicRework.Projectiles.Ring3
 {
-    public class SpikeGrowthProj : BaseMagicProj
+    public class PlantGrowthProj : BaseMagicProj
     {
         public int numVines = 20;
         internal static float deltaR = MathHelper.Pi / 32f;
@@ -21,16 +21,12 @@ namespace BG3MagicRework.Projectiles.Ring2
         {
             Projectile.width = 10;
             Projectile.height = 10;
-            Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Magic;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 99999;
             Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
             Projectile.netImportant = true;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 90;
             Projectile.hide = true;
         }
 
@@ -42,19 +38,19 @@ namespace BG3MagicRework.Projectiles.Ring2
         public override void AI()
         {
             Player owner = Main.player[Projectile.owner];
-            if (Projectile.ai[0] == 0)  //Éú³¤ºÍÎ¬³Ö½×¶Î
+            if (Projectile.ai[0] == 0)  //ç”Ÿé•¿å’Œç»´æŒé˜¶æ®µ
             {
                 if (owner.IsDead())
                 {
                     Projectile.ai[0] = 1;
                     return;
                 }
-                if (Projectile.Distance(owner.Center) > GetSpellRange<SpikeGrowthSpell>() * 16f * 6f)
+                if (Projectile.Distance(owner.Center) > GetSpellRange<PlantGrowthSpell>() * 16f * 6f)
                 {
                     Projectile.ai[0] = 1;
                     return;
                 }
-                //¶Ï×¨×¢ÁË
+                //æ–­ä¸“æ³¨äº†
                 if (owner.GetConcentration(ConUUID) == -1)
                 {
                     Projectile.ai[0] = 1;
@@ -73,7 +69,7 @@ namespace BG3MagicRework.Projectiles.Ring2
                     if (player.Distance(Projectile.Center) <= Radius &&
                         (CarefulSpellMM || Collision.CanHit(Projectile.Center, 1, 1, player.TopLeft, player.width, player.height)))
                     {
-                        player.AddBuff(ModContent.BuffType<DisadvantageTerrainBuff>(), 2);
+                        player.AddBuff(ModContent.BuffType<DisadvantageTerrainBuff2>(), 2);
                     }
                 }
                 foreach (NPC npc in Main.ActiveNPCs)
@@ -81,11 +77,11 @@ namespace BG3MagicRework.Projectiles.Ring2
                     if (npc.CanBeChasedBy(null, true) && npc.Hitbox.Distance(Projectile.Center) < Radius &&
                      (CarefulSpellMM || Collision.CanHit(Projectile.Center, 1, 1, npc.TopLeft, npc.width, npc.height)))
                     {
-                        npc.DeepAddCCBuff(ModContent.BuffType<DisadvantageTerrainBuff>(), 2);
+                        npc.DeepAddCCBuff(ModContent.BuffType<DisadvantageTerrainBuff2>(), 2);
                     }
                 }
             }
-            else if (Projectile.ai[0] == 1)  //ÏûÊ§£¬Ô­Òò¿ÉÄÜ°üº¬Ê±¼ä¹ı³¤»òÕßÌáÇ°½â³ı×¨×¢
+            else if (Projectile.ai[0] == 1)  //æ¶ˆå¤±ï¼ŒåŸå› å¯èƒ½åŒ…å«æ—¶é—´è¿‡é•¿æˆ–è€…æå‰è§£é™¤ä¸“æ³¨
             {
                 Projectile.ai[1]--;
                 if (Projectile.ai[1] <= 0) Projectile.Kill();
@@ -94,35 +90,26 @@ namespace BG3MagicRework.Projectiles.Ring2
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D middle = Terraria.GameContent.TextureAssets.Projectile[ProjectileID.VilethornBase].Value;
-            Texture2D tip = Terraria.GameContent.TextureAssets.Projectile[ProjectileID.VilethornTip].Value;
             float length = MathHelper.Lerp(0, numVines + 0.5f, MathHelper.Clamp(Projectile.ai[1] / 40f, 0, 1));
             int t = (int)length;
-            float alpha = length - t;
+            lightColor = Lighting.GetColor((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), Color.White);
             for (int i = 0; i < numVines * 2; i++)
             {
-                Color ColorWithLight;
+                float frame = i % 6;
                 float baseRot = MathHelper.TwoPi / (numVines * 2) * i;
-                Vector2 CurrentPos = baseRot.ToRotationVector2() * 25;
-                for (int j = 0; j < t; j++)
+                Vector2 UnitX = baseRot.ToRotationVector2();
+                Vector2 UnitY = UnitX.RotatedBy(MathHelper.Pi / 2f);
+                Vector2 CurrentPos = Vector2.Zero;
+                List<CustomVertexInfo> bars = new();
+                for (int j = 0; j <= t + 1; j++)
                 {
-                    Vector2 DrawPos0 = Projectile.Center + CurrentPos;
-                    ColorWithLight = Lighting.GetColor((int)(DrawPos0.X / 16f), (int)(DrawPos0.Y / 16f), Color.White);
-                    Main.spriteBatch.Draw(middle, DrawPos0 - Main.screenPosition, null, ColorWithLight, baseRot + deltaR * j + MathHelper.Pi / 2f, middle.Size() / 2f, 1f, SpriteEffects.None, 0);
+                    UnitX = (baseRot + deltaR * j).ToRotationVector2();
+                    UnitY = UnitX.RotatedBy(MathHelper.Pi / 2f);
+                    bars.Add(new CustomVertexInfo(Projectile.Center + CurrentPos - UnitY * 16f - Main.screenPosition, Color.White, new Vector3(j / (float)(t + 1), 1 / 6f * frame, 0)));
+                    bars.Add(new CustomVertexInfo(Projectile.Center + CurrentPos + UnitY * 16f - Main.screenPosition, Color.White, new Vector3(j / (float)(t + 1), 1 / 6f * (frame + 1), 0)));
                     CurrentPos += (baseRot + deltaR * j).ToRotationVector2() * 30;
                 }
-
-                Vector2 DrawPos = Projectile.Center + CurrentPos;
-                ColorWithLight = Lighting.GetColor((int)(DrawPos.X / 16f), (int)(DrawPos.Y / 16f), Color.White);
-                if (alpha <= 0.5f)
-                {
-                    Main.spriteBatch.Draw(tip, DrawPos - Main.screenPosition, null, ColorWithLight * alpha * 2, baseRot + deltaR * t + MathHelper.Pi / 2f + MathHelper.Pi / 64f, middle.Size() / 2f, 1f, SpriteEffects.None, 0);
-                }
-                else
-                {
-                    Main.spriteBatch.Draw(middle, DrawPos - Main.screenPosition, null, ColorWithLight * (alpha - 0.5f) * 2f, baseRot + deltaR * t + MathHelper.Pi / 2f, middle.Size() / 2f, 1f, SpriteEffects.None, 0);
-                    Main.spriteBatch.Draw(tip, DrawPos - Main.screenPosition, null, ColorWithLight * (1 - (alpha - 0.5f) * 2f), baseRot + deltaR * t + MathHelper.Pi / 2f, middle.Size() / 2f, 1f, SpriteEffects.None, 0);
-                }
+                DrawUtils.DrawTrail(TextureLibrary.BloodRoot, bars, lightColor, BlendState.AlphaBlend);
             }
             return false;
         }

@@ -1,5 +1,6 @@
 using BG3MagicRework.BaseType;
 using BG3MagicRework.Buffs;
+using BG3MagicRework.Buffs.Enemy;
 using BG3MagicRework.Static;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -279,6 +280,49 @@ namespace BG3MagicRework.Systems
             }
         }
 
+
+        public override void HorizontalWingSpeeds(Item item, Player player, ref float speed, ref float acceleration)
+        {
+            if (player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff2>()))
+            {
+                speed *= 0.25f;
+                acceleration *= 0.25f;
+            }
+            else if (player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff>()))
+            {
+                speed *= 0.5f;
+                acceleration *= 0.5f;
+            }
+        }
+        /// <summary>
+        /// 劣势地形影响翅膀的上升速度
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="player"></param>
+        /// <param name="ascentWhenFalling"></param>
+        /// <param name="ascentWhenRising"></param>
+        /// <param name="maxCanAscendMultiplier"></param>
+        /// <param name="maxAscentMultiplier"></param>
+        /// <param name="constantAscend"></param>
+        public override void VerticalWingSpeeds(Item item, Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
+        {
+            if (player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff2>()))
+            {
+                ascentWhenFalling *= 0.25f;
+                ascentWhenRising *= 0.25f;
+                maxAscentMultiplier *= 0.25f;
+                maxCanAscendMultiplier *= 0.25f;
+                constantAscend *= 0.25f;
+            }
+            else if (player.HasBuff(ModContent.BuffType<DisadvantageTerrainBuff>()))
+            {
+                ascentWhenFalling *= 0.5f;
+                ascentWhenRising *= 0.5f;
+                maxAscentMultiplier *= 0.5f;
+                maxCanAscendMultiplier *= 0.5f;
+                constantAscend *= 0.5f;
+            }
+        }
     }
 
 }

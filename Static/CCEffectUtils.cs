@@ -83,7 +83,7 @@ namespace BG3MagicRework.Static
         public static void AddNormalBuff(this NPC target, int buffType, int buffTime)
         {
             target.buffImmune[buffType] = false;
-            if ((!target.HasBuff(buffType) || buffTime > 2) && buffType != ModContent.BuffType<DisadvantageTerrainBuff>())
+            if ((!target.HasBuff(buffType) || buffTime > 2) && buffType != ModContent.BuffType<DisadvantageTerrainBuff>() && buffType != ModContent.BuffType<DisadvantageTerrainBuff2>())
             {
                 AdvancedCombatText.NewText(target.getRect(), Color.White, Lang.GetBuffName(buffType));
             }
@@ -104,7 +104,7 @@ namespace BG3MagicRework.Static
         public static void DeepAddCCBuff(this NPC target, int buffType, int buffTime)
         {
             target.buffImmune[buffType] = false;
-            if ((!target.HasBuff(buffType) || buffTime > 2) && buffType != ModContent.BuffType<DisadvantageTerrainBuff>())
+            if ((!target.HasBuff(buffType) || buffTime > 2) && buffType != ModContent.BuffType<DisadvantageTerrainBuff>() && buffType != ModContent.BuffType<DisadvantageTerrainBuff2>())
             {
                 AdvancedCombatText.NewText(target.getRect(), Color.White, Lang.GetBuffName(buffType));
             }
